@@ -51,7 +51,16 @@ export default class HeadTag extends Component {
 
     // on client we don't require HeadCollector
     if (this.context.reactHeadTags) {
-      const ServerComp = <Tag data-ssr="" {...rest} />;
+      const ServerComp = (
+        <Tag
+          key={`${Tag}${Object.keys(rest)
+          .filter(key => key !== 'content' && key !== 'children')
+          .map(key => `:${key}`)
+          .join('')}`}
+          data-ssr=""
+          {...rest}
+        />
+      );
       this.context.reactHeadTags.add(ServerComp);
     }
 
