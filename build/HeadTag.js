@@ -92,7 +92,14 @@ var HeadTag = function (_Component) {
 
       // on client we don't require HeadCollector
       if (this.context.reactHeadTags) {
-        var ServerComp = _react2.default.createElement(Tag, _extends({ 'data-ssr': '' }, rest));
+        var ServerComp = _react2.default.createElement(Tag, _extends({
+          key: '' + Tag + Object.keys(rest).filter(function (key) {
+            return key !== 'content' && key !== 'children';
+          }).map(function (key) {
+            return ':' + key;
+          }).join(''),
+          'data-ssr': ''
+        }, rest));
         this.context.reactHeadTags.add(ServerComp);
       }
 
