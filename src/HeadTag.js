@@ -9,13 +9,11 @@ export default class HeadTag extends Component {
   };
 
   static propTypes = {
-    tag: PropTypes.string,
-    staticSSR: PropTypes.bool,
+    tag: PropTypes.string
   };
 
   static defaultProps = {
-    tag: 'meta',
-    staticSSR: false,
+    tag: 'meta'
   };
 
   state = {
@@ -36,7 +34,7 @@ export default class HeadTag extends Component {
   }
 
   render() {
-    const { staticSSR, tag: Tag, ...rest } = this.props;
+    const { tag: Tag, ...rest } = this.props;
 
     if (this.state.canUseDOM) {
       const Comp = (
